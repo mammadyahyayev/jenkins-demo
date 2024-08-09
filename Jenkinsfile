@@ -30,6 +30,7 @@ pipeline {
 
         failure {
             echo 'Build failed. Please check the logs for details.'
+            mail bcc: '', body: "<b>Jenkins Demo</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}";
         }
     }
 }
