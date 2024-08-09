@@ -11,4 +11,11 @@ class CalculatorTest {
     assertEquals(10, Calculator.add(6, 4));
   }
 
+  @Test
+  void testAbsolute() {
+    assertEquals(5, Calculator.absolute(-5));
+    assertEquals(0, Calculator.absolute(0));
+    assertEquals(5, Calculator.absolute(5));
+  }
+
 }
