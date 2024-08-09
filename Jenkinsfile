@@ -19,7 +19,7 @@ pipeline {
         stage('test') {
             when {
                 expression {
-                    params.skipTests == False
+                    !params.skipTests
                 }
             }
             steps {
@@ -38,11 +38,13 @@ pipeline {
 
         failure {
             echo 'Build failed. Please check the logs for details.'
-            emailext(
+           /*
+           emailext(
                 subject: "Build failed in Jenkins: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                 body: "Hello,\n\nThe build has failed.\n\nJob: ${env.JOB_NAME}\nBuild Number: ${env.BUILD_NUMBER}\n\nPlease check the Jenkins console output for more details.",
                 recipientProviders: [[$class: 'CulpritsRecipientProvider'], [$class: 'RequesterRecipientProvider']]
             )
+            */
         }
     }
 }
