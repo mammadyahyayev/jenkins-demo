@@ -6,16 +6,30 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                echo 'Building project...'
-                ./mvnw clean -Dmaven.test.skip=true install
+                script {
+                    echo 'Building project...'
+                    ./mvnw clean -Dmaven.test.skip=true package
+                }
             }
         }
 
         stage('test') {
             steps {
-                echo 'Executing tests...'
-                ./mvnw test
+                script {
+                    echo 'Executing tests...'
+                    ./mvnw test
+                }
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build completed successfully!'
+        }
+
+        failure {
+            echo 'Build failed. Please check the logs for details.'
         }
     }
 }
