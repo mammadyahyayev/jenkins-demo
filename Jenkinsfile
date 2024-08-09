@@ -3,6 +3,9 @@ pipeline {
     options {
         timeout(time: 2, unit: 'MINUTES')
     }
+    parameters {
+        booleanParam(name: "skipTests", defaultValue: false, description: 'skip execution of tests if true')
+    }
     stages {
         stage('build') {
             steps {
@@ -14,6 +17,11 @@ pipeline {
         }
 
         stage('test') {
+            when {
+                expression {
+                    params.skipTests == False
+                }
+            }
             steps {
                 script {
                     echo 'Executing tests...'
