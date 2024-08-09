@@ -8,7 +8,7 @@ pipeline {
             steps {
                 script {
                     echo 'Building project...'
-                    ./mvnw clean -Dmaven.test.skip=true package
+                    sh './mvnw clean -Dmaven.test.skip=true package'
                 }
             }
         }
@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     echo 'Executing tests...'
-                    ./mvnw test
+                    sh './mvnw test'
                 }
             }
         }
