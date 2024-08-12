@@ -18,11 +18,6 @@ pipeline {
         }
 
         stage('test') {
-            when {
-                expression {
-                    !params.skipTests
-                }
-            }
             steps {
                 script {
                     executeTests(params.skipTests)
