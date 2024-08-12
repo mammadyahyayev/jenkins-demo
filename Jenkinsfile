@@ -1,3 +1,5 @@
+@Library("jenkins-shared-lib")_
+
 pipeline {
     agent any
     options {
@@ -10,8 +12,7 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    echo 'Building project...'
-                    sh './mvnw clean -Dmaven.test.skip=true package'
+                    buildJar()
                 }
             }
         }
