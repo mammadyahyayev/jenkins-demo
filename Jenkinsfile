@@ -20,7 +20,7 @@ pipeline {
         stage('test') {
             steps {
                 script {
-                    executeTests(params.skipTests)
+                    executeTests params.skipTests
                 }
             }
         }
