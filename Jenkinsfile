@@ -25,8 +25,7 @@ pipeline {
             }
             steps {
                 script {
-                    echo 'Executing tests...'
-                    sh './mvnw test'
+                    executeTests(params.skipTests)
                 }
             }
         }
@@ -40,11 +39,11 @@ pipeline {
         failure {
             echo 'Build failed. Please check the logs for details.'
            /*
-           emailext(
-                subject: "Build failed in Jenkins: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
-                body: "Hello,\n\nThe build has failed.\n\nJob: ${env.JOB_NAME}\nBuild Number: ${env.BUILD_NUMBER}\n\nPlease check the Jenkins console output for more details.",
-                recipientProviders: [[$class: 'CulpritsRecipientProvider'], [$class: 'RequesterRecipientProvider']]
-            )
+               emailext(
+                    subject: "Build failed in Jenkins: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
+                    body: "Hello,\n\nThe build has failed.\n\nJob: ${env.JOB_NAME}\nBuild Number: ${env.BUILD_NUMBER}\n\nPlease check the Jenkins console output for more details.",
+                    recipientProviders: [[$class: 'CulpritsRecipientProvider'], [$class: 'RequesterRecipientProvider']]
+                )
             */
         }
     }
