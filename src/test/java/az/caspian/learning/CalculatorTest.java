@@ -18,4 +18,11 @@ class CalculatorTest {
     assertEquals(5, Calculator.absolute(5));
   }
 
+  @Test
+  void testExceptionThrownWhenDividingByZero() {
+    assertThrows(ArithmeticException.class, () -> {
+      Calculator.divide(4, 0);
+    });
+  }
+
 }
