@@ -25,4 +25,9 @@ class CalculatorTest {
     });
   }
 
+  @Test
+  void testDivision() {
+    assertEquals(2, Calculator.divide(4, 2));
+  }
+
 }
